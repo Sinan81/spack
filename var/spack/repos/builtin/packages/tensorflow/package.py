@@ -297,6 +297,7 @@ class Tensorflow(Package):
             # So, explicitly disable them via bazel options.
             if self.spec.satisfies('@2.1.0-rc0'):
                 bazel('build', '--jobs={0}'.format(make_jobs), '-c', 'opt',\
+                    '--copt=-mavx','--copt=-mavx2','--copt=-mfma','--copt=-msse4.1','--copt=-msse4.2',\
                     '--config=cuda', '--config=noaws', '--config=nogcp',\
                     '--config=nohdfs',\
                     '--cxxopt=-D_GLIBCXX_USE_CXX11_ABI=0',\
@@ -304,6 +305,7 @@ class Tensorflow(Package):
                     '//tensorflow/tools/pip_package:build_pip_package')
             else:
                 bazel('build', '--jobs={0}'.format(make_jobs), '-c', 'opt',\
+                    '--copt=-mavx','--copt=-mavx2','--copt=-mfma','--copt=-msse4.1','--copt=-msse4.2',\
                     '--config=cuda', '--config=noaws', '--config=nogcp',\
                     '--config=nohdfs', '--config=noignite', '--config=nokafka',\
                     '--cxxopt=-D_GLIBCXX_USE_CXX11_ABI=0',\
@@ -311,12 +313,14 @@ class Tensorflow(Package):
         else:
             if self.spec.satisfies('@2.1.0-rc0'):
                 bazel('build', '--jobs={0}'.format(make_jobs), '-c', 'opt',\
+                    '--copt=-mavx','--copt=-mavx2','--copt=-mfma','--copt=-msse4.1','--copt=-msse4.2',\
                     '--config=noaws', '--config=nogcp', '--config=nohdfs',\
                     '--cxxopt=-D_GLIBCXX_USE_CXX11_ABI=0',\
                     '--define=tensorflow_mkldnn_contraction_kernel=0',\
                     '//tensorflow/tools/pip_package:build_pip_package')
             else:
                 bazel('build', '--jobs={0}'.format(make_jobs), '-c', 'opt',\
+                    '--copt=-mavx','--copt=-mavx2','--copt=-mfma','--copt=-msse4.1','--copt=-msse4.2',\
                     '--config=noaws', '--config=nogcp',\
                     '--config=nohdfs', '--config=noignite', '--config=nokafka',\
                     '--cxxopt=-D_GLIBCXX_USE_CXX11_ABI=0',\
