@@ -20,4 +20,4 @@ class PyMysqlclient(PythonPackage):
 
     depends_on('py-setuptools', type='build')
     # Below: cxxstd=17 also works
-    depends_on('mysql cxxstd=14')
+    depends_on('mysql')

@@ -120,7 +120,7 @@ class Tensorflow(Package):
             env.set('CUDNN_INSTALL_PATH',str(spec['cudnn'].prefix)) # ignored? as of tf@1.14.0:
             # TODO: create a string valued variant for compute capabilities?
             # one should be able to specify single or multiple capabilities
-            env.set('TF_CUDA_COMPUTE_CAPABILITIES',"6.1,7.5")
+            env.set('TF_CUDA_COMPUTE_CAPABILITIES',"5.2,6.1,7.5")
 
             # @v1.13, config hangs without the following nccl env variables
             # however, in the end it ignores them, and sets these incorrectly
@@ -184,7 +184,7 @@ class Tensorflow(Package):
         #           subprocess.call(['stat', '--file-system', '--format=%T', tmp_path]) # noqa: E501
         #       to not be nfs. This is only valid for Linux and we'd like to
         #       stay at least also OSX compatible
-        tmp_path = '/tmp/spack' + '/tf'
+        tmp_path = '/cache/spack/tf'
 #        tmp_path = env['SPACK_TMPDIR'] '/tmp/spack') + '/tf' #TODO
         mkdirp(tmp_path)
         env.set('TEST_TMPDIR', tmp_path)
