@@ -26,6 +26,7 @@ class PyPyqt5(SIPPackage):
         'PyQt5.QtXmlPatterns'
     ]
 
+    version('5.13.1', sha256='54b7f456341b89eeb3930e786837762ea67f235e886512496c4152ebe106d4af')
     version('5.13.0', sha256='0cdbffe5135926527b61cc3692dd301cd0328dd87eeaf1313e610787c46faff9')
 
     variant('qsci', default=False, description='Build with QScintilla python bindings')
