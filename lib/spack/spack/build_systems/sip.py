@@ -41,10 +41,16 @@ class SIPPackage(PackageBase):
 
     depends_on('qt')
 
+#    resource(name='sip',
+#             url='https://www.riverbankcomputing.com/static/Downloads/sip/4.19.19/sip-4.19.19.tar.gz',
+#             sha256='c0bd863800ed9b15dcad477c4017cdb73fa805c25908b0240564add74d697e1e',
+#             destination='.')
+
     resource(name='sip',
-             url='https://www.riverbankcomputing.com/static/Downloads/sip/4.19.18/sip-4.19.18.tar.gz',
-             sha256='c0bd863800ed9b15dcad477c4017cdb73fa805c25908b0240564add74d697e1e',
+             url='https://www.riverbankcomputing.com/static/Downloads/sip/4.19.19/sip-4.19.19.tar.gz',
+             sha256='5436b61a78f48c7e8078e93a6b59453ad33780f80c644e5f3af39f94be1ede44',
              destination='.')
+
 
     def python(self, *args, **kwargs):
         """The python ``Executable``."""
@@ -61,7 +67,7 @@ class SIPPackage(PackageBase):
             '--stubsdir={0}'.format(inspect.getmodule(self).site_packages_dir),
         ]
 
-        with working_dir('sip-4.19.18'):
+        with working_dir('sip-4.19.19'):
             self.python('configure.py', *args)
 
             inspect.getmodule(self).make()
