@@ -23,6 +23,7 @@ class Cgal(CMakePackage):
     version('4.9',   sha256='63ac5df71f912f34f2f0f2e54a303578df51f4ec2627db593a65407d791f9039')
     version('4.7',   sha256='50bd0a1cad7a8957b09012f831eebaf7d670e2a3467e8f365ec0c71fa5436369')
     version('4.6.3', sha256='e338027b8767c0a7a6e4fd8679182d1b83b5b1a0da0a1fe4546e7c0ca094fc21')
+    version('4.3',   sha256='1be48aa67e32860d36c649efc89235d690be9c228a72041772960ce068658a0a')
 
     variant('shared', default=True,
             description='Enables the build of shared libraries')
@@ -84,3 +85,9 @@ class Cgal(CMakePackage):
             '-DWITH_CGAL_Qt5:BOOL=%s' %
             ('YES' if '+demos' in spec else 'NO'),
         ]
+
+    def url_for_version(self, version):
+        url = self.url
+        if version <= Version('4.6.2'):
+            url = '/'.join(url.split('/')[0:-5]) + '/archive/releases/CGAL-' + str(self.version) + '.tar.gz'
+        return url
