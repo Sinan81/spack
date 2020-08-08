@@ -73,6 +73,8 @@ class Pocl(CMakePackage):
 
     depends_on('ocl-icd', when='+icd')
 
+    conflicts('llvm@10.0.0', when='@1.5')
+
     def url_for_version(self, version):
         if version >= Version('1.0'):
             url = "https://github.com/pocl/pocl/archive/v{0}.tar.gz"
